@@ -1,0 +1,71 @@
+{% load staticfiles %}
+
+<!-- 导航区 -->
+{#<div id="q" class="q1" >#}
+{#     <ul>#}
+{#        <li style=" background-color: #000; "><a class="a-zy" href="{% url 'homepage' %}"><p>首页</p></a></li>#}
+{#        <li style=" background-color: #000; "><a class="a-zy" href="{% url 'article' 'news' %}" ><p>新闻动态</p></a></li>#}
+{#        <li style=" background-color: #000; "><a class="a-zy" href="{% url 'about' %}" ><p>关于我们</p></a></li>#}
+{#        <li style=" background-color: #000;"><a class="a-zy" href="{% url 'options' 'product' %}" ><p>公司产品</p></a></li>#}
+{#        <li style=" background-color: #000;"><a class="a-zy" href="{% url 'options' 'plan' %}"><p>产品方案</p></a></li>#}
+{#        <li style=" background-color: #000;"><a class="a-zy" href="{% url  'case' %}" ><p>经典案列</p></a></li>#}
+{#        <li style=" background-color: #000;"><a class="a-zy" href="{% url 'league' %}" ><p>加盟我们</p></a></li>#}
+{#        <li style=" background-color: #000;"><a class="a-zy" href="{% url 'joinus' %}"><p>加入我们</p></a></li>#}
+{#     </ul>#}
+{#</div>#}
+
+<div id="q" class="q1" >
+            	<ul>
+                	<span style=" background:#202020; display:block; width:60px; height:60px;">
+                    	<img src="{% static 'img/logo.png' %}" style="width:30px; height:30px;margin-left:15px; margin-top:15px; margin-bottom:15px;" />
+                    </span>
+                   	<li id="bt1"  >
+                        <a  href="{% url 'homepage' %}">
+                    	<p id="ct1" class="t1"></p>
+                        <div>首页</div>
+                        </a>
+                    </li>
+                    <li id="bt2" >
+                        <a class="a-zy" href="{% url 'article' 'news' %}" >
+                    	<p id="ct2"  class="t2"></p>
+                        <div>新闻动态</div>
+                        </a>
+                    </li>
+                    <li id="bt3" >
+                        <a class="a-zy" href="{% url 'about' %}" >
+                    	<p id="ct3" class="t3"></p>
+                        <div>关于我们</div>
+                        </a>
+                    </li>
+                    <li id="bt4" >
+                        <a class="a-zy" href="{% url 'options' 'product' %}">
+                    	<p id="ct4" class="t4"></p>
+                        <div>公司产品</div>
+                        </a>
+                    </li>
+                    <li id="bt5" >
+                        <a class="a-zy" href="{% url 'options' 'plan' %}">
+                    	<p id="ct5" class="t5"></p>
+                        <div>产品方案</div>
+                        </a>
+                    </li>
+                    <li id="bt6" >
+                        <a class="a-zy" href="{% url  'case' %}" >
+                    	<p id="ct6" class="t6"></p>
+                        <div>经典案例</div>
+                        </a>
+                    </li>
+                    <li id="bt7">
+                        <a class="a-zy" href="{% url 'league' %}" >
+                   	 	<p id="ct7" class="t7"></p>
+                        <div>渠道加盟</div>
+                        </a>
+                    </li>
+                    <li id="bt8"  id="tu1" >
+                        <a class="a-zy" href="{% url 'joinus' %}">
+                    	<p id="ct8" class="t8"></p>
+                        <div>加入我们</div>
+                        </a>
+                    </li>
+                </ul>
+</div>

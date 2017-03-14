@@ -1,0 +1,87 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>杭州政云数据技术有限公司</title>
+
+    <link rel="stylesheet" href="{% static 'css/gongyong.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/chanping.css' %}">
+    <link rel="stylesheet" href="{% static 'css/width-1440.css' %}">
+    <link rel="stylesheet" href="{% static 'css/width-1366.css' %}">
+    <link rel="stylesheet" href="{% static 'css/width-1280.css' %}" >
+    <script src="{% static 'JS/jquery-1.11.1.min.js' %}"></script>
+
+    <script src="{% static 'JS/panduan.js' %}"></script>
+    <script src="{% static 'JS/yundong2.js' %}"></script>
+    <script src="{% static 'JS/Search.js' %}"></script>
+
+<script src="{% static 'JS/IE8-1.js' %}"></script>
+<script src="{% static 'JS/IE8-2.js' %}"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#niu1").click(function () {
+                window.location.href = 'index';
+
+            });
+
+        });
+
+
+
+        //首页文字动效
+
+        function tt() {
+            startMove(document.getElementById('zi1'), {opacity: 100})
+        }
+        setTimeout(tt, 1000);
+
+        function tt1() {
+            startMove(document.getElementById('zi2'), {opacity: 100})
+        }
+        setTimeout(tt1, 2000);
+
+        function tt2() {
+            startMove(document.getElementById('input1'), {opacity: 100})
+        }
+        setTimeout(tt2, 2500);
+
+
+    </script>
+
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden;">
+
+
+<div id="q1" class="w2" style=" margin-left: 0px;">
+    <!-- 首页 -->
+    <div id="tab1" class="content1 tad" style="display:block;">
+        <div id="xb" class="zhezhao1"></div>
+        <div id="sdf">
+            <video id="tv" autoplay="1" loop="1" src="{% static 'img/scene_3_7r.mp4' %}" class="tv"></video>
+            <div class="kuang">
+                <div id="zi1" class="zi"><img src="{% static 'img/b2.png' %}" style="width:100%; height:100%;"/></div>
+                <div id="zi2" class="zi-1"><img src="{% static 'img/zhenyun.png' %}" style="width:100%; height:100%;"/></div>
+                <div id="input1" class="sousuo">
+                    <input id="selech_input" name="keyword" type="text" value="" placeholder="请输入产品或方案名称" maxlength="12" style=" color:#8c7e7e "/>
+                    <a id="query_button" href="#"><img src="{% static 'img/xc.png' %}"/></a>
+
+                    <div id="niu1" class="anniu2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

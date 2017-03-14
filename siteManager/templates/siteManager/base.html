@@ -1,0 +1,67 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{% block title %}杭州政云数据技术有限公司{% endblock %}</title>
+<script src="{% static 'JS/IE8-1.js' %}"></script>
+<script src="{% static 'JS/IE8-2.js' %}"></script>
+<script src="{% static 'JS/respond.js' %}"></script>
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/gongyong.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/chanping.css' %}">
+<link rel="stylesheet" href="{% static 'css/Untitled-6.css' %}" />
+<link rel="stylesheet" href="{% static 'css/xinwengdongtai.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/width-1440.css' %}" >
+<link rel="stylesheet" href="{% static 'css/width-1366.css' %}" >
+<link rel="stylesheet" href="{% static 'css/width-1280.css' %}" >
+<script src="{% static 'JS/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'JS/panduan.js' %}"></script>
+
+
+
+<script type="text/javascript"  >
+
+    $(document).ready(function () {
+        //导航
+        $(".q1 li").click(function(){
+            var index = $(".q1 li").index(this);
+            $(".tad").hide(0);
+            $(".tad").eq(index).fadeIn(0);
+        });
+
+    });
+
+</script>
+
+<!--代码高亮配置
+<link rel="stylesheet" type="text/css" href="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/Monokai.css' %}" >
+<script src="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js' %}"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+-->
+{% endblock %}
+</head>
+
+{% block bodystyle %}
+<body  style="overflow-x:hidden;overflow-y:hidden;">
+{% endblock %}
+
+{% block navigation %}
+    {% include 'siteManager/navigation_new.html' %}
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block js %}
+    {% include 'siteManager/js.html' %}
+{% endblock %}
+
+</body>
+</html>

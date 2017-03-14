@@ -1,0 +1,116 @@
+﻿{% extends 'siteManager/base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/gongyong.css' %}">
+<link rel="stylesheet" href="{% static 'css/chanping.css' %}">
+<link rel="stylesheet" href="{% static 'css/width-1440.css' %}">
+<link rel="stylesheet" href="{% static 'css/width-1366.css' %}">
+<link rel="stylesheet" href="{% static 'css/width-1280.css' %}" >
+<link rel="stylesheet" href="{% static 'css/newscontent.css' %}"/>
+<script src="{% static 'JS/jquery-1.11.1.min.js'%}"></script>
+{% endblock %}
+
+{% block content %}
+<div id="q1" class="w2" style="margin-left: 60px;">
+    <div id="box" class="content2-1 tad">
+        <div id="zxc" class="anniu1"><a href="{% url 'joinus' %}">返回</a></div>
+        <div id="li1" class="content-box1">
+            <ul>
+                <div class="zhihui">人才招聘</div>
+                {% if recruit_list %}
+                {% for recruit in recruit_list %}
+                {% if recruit.iscurrent %}
+                <li style="background-color: #669535;">
+                    <p class="contentid" id="{{ recruit.id }}">{{ recruit.Position | slice:"15"}}</p>
+                </li>
+                {% else %}
+                <li>
+                    <p class="contentid" id="{{ recruit.id }}">{{ recruit.Position | slice:"15"}}</p>
+                </li>
+                {% endif%}
+                {% endfor %}
+                {% endif%}
+            </ul>
+        </div>
+
+        <div class="content-box2">
+
+            <div class="content-box3">
+                <div class="content-box4">
+                    <div class="textcontent">
+                        <div class="contenttitle">
+                            <h2 id="joinus_position" style="color: #000000; text-align: center">
+                            {{recruit_content.Position}}</h2>
+                        </div>
+                        <div id="joinus_content" class="newscontent">
+                            {{ recruit_content.Content|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--点击事件-->
+<link rel="stylesheet" type="text/css"
+      href="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/Monokai.css' %}">
+<script src="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js' %}"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    $(document).ready(function () {
+        $(".contentid").click(function () {
+            var contentid = $(this).attr("id");
+
+            $.get("{% url 'content_ajax' %}", {'table': 'joinus', 'contentid': contentid}, function (ret) {
+                var contentText = ret["Content"];
+                $('#joinus_position').empty();
+                $('#joinus_position').append(ret["Position"]);
+
+                $('#joinus_content').empty();
+                $('#joinus_content').append(ret["Content"]);
+
+                //刷新内嵌样式
+                $('pre code').each(function (i, block) {
+                    hljs.highlightBlock(block);
+                });
+            })
+        });
+
+
+    });
+</script>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'JS/yundong2.js' %}"></script>
+<script src="{% static 'JS/panduan.js' %}"></script>
+<script src="{% static 'JS/daohang.js' %}"></script>
+<script src="{% static 'JS/jquery-1.11.1.min.js' %}"></script>
+<script>
+
+
+    // 添加选中的样式
+    var foo = function () {
+        var li1 = document.getElementById('li1'),
+                oLi3 = li1.getElementsByTagName('li'),
+                i = 0,
+                max = oLi3.length;
+        for (; i < max; i++) {
+            (function (index) {
+                oLi3[index].onclick = function () {
+
+                    for (var i = 0; i < oLi3.length; i++) {
+                        oLi3[i].style.backgroundColor = ''
+                    }
+                    this.style.backgroundColor = '#669535';
+                };
+            })(i);
+        }
+    };
+    foo();
+</script>
+
+{% endblock %}

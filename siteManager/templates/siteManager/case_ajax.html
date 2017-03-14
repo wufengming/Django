@@ -1,0 +1,246 @@
+{% extends 'siteManager/base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/gongyong.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/chanping.css' %}">
+<link rel="stylesheet" href="{% static 'css/width-1440.css' %}" >
+<link rel="stylesheet" href="{% static 'css/width-1366.css' %}" >
+<link rel="stylesheet" href="{% static 'css/width-1280.css' %}" >
+<script src="{% static 'JS/jquery-1.11.1.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/biaoge.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="q1" class="w2" style="background: #000">
+        <!-- 关于我们 -->
+        <div id="tab2" class="content2 tad">
+            <div id="zhezhao4" class="zhezhao"></div>
+            <div class="lianxi-left-box-case">
+                <!--<div id="leftbox1" class="lianxi-left-box1">-->
+                <div id="leftbox1">
+                        <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+                       <div id="main" ></div>
+                </div>
+            </div>
+
+				<div id="lianxi-right-box" class="lianxi-right-box" style="left:63%;">
+				   <div id='biaoge' class="biaoge">
+						<div class="top1">
+						   安徽省经典方案
+						</div>
+						<div class="wen">
+							<div class="wen1">数字农经</div>
+							<ul>
+								<li><p>双方都胜多负少驱蚊器无</p></li>
+							</ul>
+							<ul>
+								<li><p>双方都胜多负请问少</p></li>
+							</ul>
+							<ul>
+								<li><p>双方都胜多负请问请问群无少</p></li>
+							</ul>
+						</div>
+						<div class="wen">
+							<div class="wen1">数字理财</div>
+							<ul>
+								<li><p>双方都胜多负少双方都胜多负少双方都胜多负少双方都胜多负少双方都胜多负少双方都胜多负少双方都胜多负少双方都胜多负少</p></li>
+							</ul>
+							<ul>
+								<li><p>双方都胜多负少</p></li>
+							</ul>
+							<ul>
+								<li><p>双方都胜多负少</p></li>
+							</ul>
+						</div>
+						<div class="wen">
+							<div class="wen1">智慧工会</div>
+							<ul>
+								<li><p>双方都胜多负少</p></li>
+							</ul>
+							<ul>
+								<li><p>双方都胜多负少</p></li>
+							</ul>
+							<ul>
+								<li><p>双方都胜多负少</p></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'JS/case.js' %}"></script>
+    <script src="{% static 'JS/yundong2.js' %}"></script>
+    <script src="{% static 'JS/panduan.js' %}"></script>
+    <script src="{% static 'JS/daohang.js' %}"></script>
+
+
+    <script src="{% static 'JS/echarts.min.js' %}"></script>
+    <script src="{% static 'JS/china.js' %}"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+
+		//获取选中的省份
+		var default_data=[];
+
+		$.get("{% url 'area_ajax' %}",{}, function(ret){
+
+			var data = $.parseJSON(ret.data);
+
+			var areaitem={ name: data['Area'], selected:true};
+
+			default_data.push(areaitem);
+
+
+			 myChart.setOption({ //渲染数据
+				series: [{
+					data: default_data
+				}]
+			});
+
+
+			setTimeout(function(){
+              areadata(data['Area']);
+		    });
+
+		});
+
+		var mapContainer = document.getElementById('main');//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+
+		var resizeMapContainer = function () {
+			mapContainer.style.width = window.innerWidth * 0.60 +'px';
+			mapContainer.style.height = window.innerHeight * 0.95 +'px';
+		};
+		//设置容器高宽
+		resizeMapContainer();
+
+		//用于使chart自适应高度和宽度
+		window.onresize = function () {
+			//重置容器高宽
+			resizeMapContainer();
+			myChart.resize();
+		};
+
+
+		// 基于准备好的dom，初始化echarts实例
+		var myChart = echarts.init(mapContainer);
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+		option = {
+			title: {
+				show: false
+			},
+			tooltip: {
+				show: true,
+				trigger: 'item',
+				formatter: '{b0}'
+			},
+			series : [
+				   {
+					   name: '',
+					   type: 'map',
+					   mapType: 'china',
+					   selectedMode : 'single',    //single  multiple
+					   roam: true,
+					   itemStyle:{
+						   normal:{
+								label:{show: true},
+								borderWidth: 0.15,//省份的边框宽度
+								borderColor:'#f61',//省份的边框颜色
+								color:'#ece2df'//地图背景颜色
+								//areaStyle:{color:'#f60'}//设置地图颜色
+							},
+						   emphasis:{
+							   shadowOffsetX: 0,
+							   shadowOffsetY: 0,
+							   shadowBlur: 10,
+							   borderWidth: 0,
+							   shadowColor: 'rgba(0, 0, 0, 0.5)',
+							   areaColor: '#bdd07e'   //选中颜色
+						   }
+					   },
+					   data:[
+
+					   ]//各省地图颜色数据依赖value
+				   }
+			],
+			dataRange: {
+			   x: '-1000px',//图例横轴位置
+			   y: '-1000px',//图例纵轴位置
+			   splitList: [
+
+			   ]
+		   }
+		};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+
+
+		myChart.on("click",function (params){
+			//alert("name:" +params.name + ", value:" + params.value);
+            var area = params.name;
+
+			areadata(area);
+		});
+
+
+		var areadata=function(area){
+
+			 $('#biaoge').empty();
+			 $('#biaoge').append('<div class="top1">' + area + '经典案例' +'</div>');
+			 $.get("{% url 'case_ajax' %}",{ 'area':area}, function(ret){
+                if (ret.res == 'success')
+                {
+                    var data = $.parseJSON(ret.msg);
+					var data_type=$.parseJSON(ret.type);
+
+
+					 for (var i=0;i<data_type.length;i++){
+
+						 //类型
+						 var type=data_type[i]['Name'];
+
+						 var istitle=false;
+						 var content_body='';
+
+						 //政府理财 | 智慧三农 | 智慧工会
+						var content_wen = $('<div class="wen"></div>');
+
+
+						for (var j=0;j<data.length;j++)
+						{
+
+							if(type===data[j]['TypeID__Name']){
+								istitle=true;
+                                content_body = content_body + '<ul><li><p>' + data[j]['Title'] + '</p></li></ul>';
+							}
+						}
+
+
+						 if(istitle){
+							content_wen.append('<div class="wen1">'+type+'</div>');
+							content_wen.append(content_body);
+
+							$('#biaoge').append(content_wen);
+						 }
+
+					 }
+                }
+            })
+
+		};
+
+
+	});
+    </script>
+{% endblock %}
+

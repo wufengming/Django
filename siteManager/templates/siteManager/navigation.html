@@ -1,0 +1,37 @@
+{% load staticfiles %}
+
+<!-- 导航区 -->
+<div id="q" class="q1" >
+    <div class="q4">
+        <div class="q3" id="btn1">
+            <div id="anniu" class="q3-1"></div>
+        </div>
+        <div class="logo"></div>
+    </div>
+    <div id="navigation1" class="navigation">
+        <ul>
+            <li><a href="{% url 'homepage' %}" >首页</a></li>
+            <li><a href="{% url 'article' 'news' %}" >新闻动态</a></li>
+            <li><a class="a-zy" href="{% url 'about' %}" >关于我们</a></li>
+            <li><a class="a-zy" href="{% url 'options' 'product' %}" >公司产品</a></li>
+            <li><a class="a-zy" href="{% url 'options' 'plan' %}" >产品方案</a></li>
+            <li><a class="a-zy" href="{% url  'case' %}" >经典案列</a></li>
+            <li><a class="a-zy" href="{% url 'league' %}" >加盟我们</a></li>
+            <li><a class="a-zy" href="{% url 'joinus' %}" >加入我们</a></li>
+        </ul>
+    </div>
+    <div class="kuang1">
+                <div class="kuang2">
+                    <p>杭州政云数据有限公司</p>
+                    <p>浙江省杭州市拱墅区祥园路88号</p>
+                    <p>中国（杭州）智慧信息产业园N座</p>
+                    <p>电话：+86-571-88270588</p>
+                    <p>传真：+86-571-88270210</p>
+                    <p>邮箱：wanggang@newgrand.cn</p>
+                    <p>QQ:765210338</p>
+                    <p>浙ICP备15028902号</p>
+                    <div><img src="{% static 'img/erweima.jpg'%}" style="width:80px; height:80px" /></div>
+                 	<div><img src="{% static 'img/erweima.jpg' %}" style="width:80px; height:80px" /></div>
+                </div>
+            </div>
+</div>

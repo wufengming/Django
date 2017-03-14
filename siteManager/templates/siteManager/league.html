@@ -1,0 +1,141 @@
+{% extends 'siteManager/base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/gongyong.css' %}">
+<link rel="stylesheet" href="{% static 'css/league.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/chanping.css' %}">
+<link rel="stylesheet" href="{% static 'css/xinwengdongtai.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/width-1440.css' %}" >
+<link rel="stylesheet" href="{% static 'css/width-1366.css' %}" >
+<script src="{% static 'JS/jquery-1.11.1.min.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+<div id="q1" class="w2" style="background:url('{% static 'IMG/1.png' %}') no-repeat; background-size:100% 100%;">
+    <div class="boxx">
+        <div  class="boxx1" style=" background:url('{%static 'IMG/ditu1.png' %}') no-repeat;background-size:100% 100%;">
+
+            <div class="boxx2" style="background:url('{% static 'IMG/beijin.png' %}');">
+                <div style="width:100%; background:url('{% static 'IMG/tu1.png' %}');height:30px; font-weight:bold; color:#F00; text-align:center; line-height:30px; font-family:'微软雅黑'; ">渠道英雄榜</div>
+                 <div style="width:100%; height:230px;">
+                    <marquee id="herolist" direction="up"scrollamount="2" class="boxx3">
+
+                    </marquee>
+                 </div>
+                <!--<button style="background: url('{% static 'IMG/1t.jpg' %}'); width: 318px; height: 58px; background-size:100% 100%; margin:104px -20px 0; "></button>-->
+                 <a class="button" href="{% url 'download_1' %} " style="background: url('{% static 'IMG/1t.jpg' %}'); width: 318px; height: 58px; background-size:100% 100%; margin:104px -20px 0; " type="button"></a>
+            </div>
+        </div>
+        <div id="divv1">
+            <ul>
+                <li  id="league1"><a href="{% url 'leaguedetail' '申请加盟' %}">一申请加盟一〉</a></li>
+                <div id="league1-content"></div>
+                <li  id="league2" style="margin-left:40px;"><a href="{% url 'leaguedetail' '支持保障' %}">一支持保障一〉</a></li>
+                <div id="league2-content"></div>
+                <li  id="league3" style="margin-left:70px;"><a href="{% url 'leaguedetail' '伙伴体系' %}">一伙伴体系一〉</a></li>
+                <div id="league3-content"></div>
+                <li  id="league4" style="margin-left:70px;"><a href="{% url 'leaguedetail' '伙伴招聘' %}">一伙伴招聘一〉</a></li>
+                <div id="league4-content"></div>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'JS/yundong2.js' %}"></script>
+{#<script>#}
+{#	var oDiv=document.getElementById('divv1');#}
+{#	var oLi=oDiv.getElementsByTagName('li');#}
+{#	var oDiv1=oDiv.getElementsByTagName('div');#}
+{#	for(var i=0;i<oLi.length;i++)#}
+{#	{#}
+{#		oLi[i].index=i#}
+{#		oLi[i].onclick=function(){#}
+{#			for(var i=0;i<oLi.length;i++)#}
+{#			{#}
+{#				startMove(oDiv1[i],{height:0});#}
+{#				oDiv1[i].style.zIndex='1';#}
+{#				if(oDiv1[this.index].style.height=='320px')#}
+{#				{#}
+{#					startMove(oDiv1[this.index],{height:0});#}
+{#				}#}
+{#				else#}
+{#				{#}
+{#					startMove(oDiv1[this.index],{height:320});#}
+{#					oDiv1[this.index].style.zIndex='10';#}
+{#				}#}
+{##}
+{#			}#}
+{#		}#}
+{#	};#}
+{#</script>#}
+{% endblock %}
+
+{% block js %}
+<link rel="stylesheet" href="{% static 'css/jiaru.css' %}">
+<script src="{% static 'JS/panduan.js' %}"></script>
+<script src="{% static 'JS/daohang.js' %}"></script>
+<script src="{% static 'JS/jquery-1.11.1.min.js' %}"></script>
+
+<script>
+
+    $(document).ready(function(){
+        //初始化英雄榜列表
+        $.get("{% url 'hero_ajax' %}",{"type": '渠道'},
+            function(ret){
+                if (ret.res =='success') {
+                    $('#herolist').empty();
+                    var data = $.parseJSON(ret.msg);
+                    for (var i = 0; i < data.length; i++) {
+                        $('#herolist').append('<p>' + data[i]['Name'] + '</p>');
+                    }
+                }
+        });
+
+{#        $("#league1").click(function () {#}
+{#            if ($("#league1-content").find("*").length < 1)#}
+{#            {#}
+{#                getContent('1','申请加盟');#}
+{#            }#}
+{#        });#}
+{##}
+{#        $("#league2").click(function () {#}
+{#            if ($("#league2-content").find("*").length < 1)#}
+{#            {#}
+{#                getContent('2','支持保障');#}
+{#            }#}
+{#        });#}
+{##}
+{#        $("#league3").click(function () {#}
+{#            if ($("#league3-content").find("*").length < 1)#}
+{#            {#}
+{#                getContent('3','伙伴体系');#}
+{#            }#}
+{#        });#}
+{##}
+{#        $("#league4").click(function () {#}
+{#            if ($("#league4-content").find("*").length < 1)#}
+{#            {#}
+{#                getContent('4','伙伴招聘');#}
+{#            }#}
+{#        });#}
+{##}
+{#        //获取内容#}
+{#        function getContent(id, type)#}
+{#        {#}
+{#            $.get("{% url 'leaguecontent_ajax' %}",{"type": type},#}
+{#                function(ret){#}
+{#                    if (ret.res =='success') {#}
+{#                       $('#league' + id + '-content').empty();#}
+{#                       if (ret.msg.length > 0) {#}
+{#                           $('#league' + id + '-content').append(ret.msg);#}
+{#                       }#}
+{#                    }#}
+{#            });#}
+{#        }#}
+
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,222 @@
+{% extends 'siteManager/base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+<!--<link rel="stylesheet" href="{% static 'css/gongyong.css' %}">-->
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/chanping.css' %}">
+<link rel="stylesheet" href="{% static 'css/stylesv.css' %}"/>
+
+<link rel="stylesheet" href="{% static 'css/width-1440.css' %}">
+<link rel="stylesheet" href="{% static 'css/width-1366.css' %}">
+<link rel="stylesheet" href="{% static 'css/width-1280.css' %}">
+<script src="{% static 'JS/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'JS/jquery.timelinr-0.9.4.js' %}"></script>
+<script>
+    <!-- 时间轴控制 -->
+    $(function () {
+        $().timelinr({
+            orientation: 'vertical',
+            issuesSpeed: 300,
+            datesSpeed: 0,
+            issuesSpeed: 400,
+            arrowKeys: 'true',
+            autoPlay: 'true',
+            startAt: 1
+
+        })
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="q1" class="w2">
+    <!-- 关于我们 -->
+    <div id="tab2" class="content2 tad" style="background: #000;display:block;">
+        <!--<div id="zhezhao4" class="zhezhao"></div>-->
+        <div class="lianxi-left-box">
+            <div id="leftbox1" class="lianxi-left-box1">
+                <div class="pt1" style="background:url(/static/img/anlib.jpg) no-repeat; background-size:100% 100%">
+                    <span class="guanbi">×</span>
+
+                    <p class="kusou" style="color:#fff;">
+
+                              <br>&nbsp; 杭州政云数据技术有限公司成立于2014年6月，是杭州新中大软件股份有限公司全资子公司，公司致力于利用互联网、智能化、云计算等信息技术，帮助政府部门提升政务管控效率，面向工会、财政、农业等政府部门提供相关软件的咨询、研发、服务。<br>
+                              <br>&nbsp; 互联网时代智慧工会、政府理财解决方案领导厂商，目前政云数据已为中华全国总工会、中国疾病预防控制中心、北京市总工会、浙江省总工会、湖南省总工会、 河北省农业厅、江西省农业厅、陕西省农业厅、杭州市财政局、等数万政府机构提供安全、稳定性的产品和大数据应用服务。
+
+                    </p>
+                </div>
+                <div class="pt1" style="background:url(/static/img/anlib.jpg) no-repeat; background-size:100% 100%">
+                    <span class="guanbi">×</span>
+
+                    <p class="kusou" style="color:#fff; ">
+
+                                <br>公司愿景：成为DT时代领先的大数据管理应用解决方案供应商；
+                                <br>
+                                <br>公司使命：推进工会管理进入信息智能时代；
+                                <br>
+                                <br>公司文化价值观：
+                                <br>&nbsp;&nbsp;•	创新  中和   大成
+                                <br>&nbsp;&nbsp;•	执行  责任   坚持
+                                <br>
+                                <br>公司服务理念：
+                                <br>&nbsp;&nbsp;•	100-1=0，高效服务，客户至上；
+                                <br>
+                                <br>公司十三五规划：
+                                <br>&nbsp;政云数据致力于引领工会行业信息化创新；
+                                <br>&nbsp;政云数据致力于成为政府理财专家；
+                                <br>&nbsp;政云数据致力于成就“有故事的”行业公司；
+
+                    </p>
+                </div>
+                <img src="/static/img/anlie.png" style="width:100%; height:100%"/>
+                <ul class="ax">
+                    <li class="ax1"></li>
+                    <li class="ax2"></li>
+                    <a class="ax3" onClick="location.href='{% url 'channel' %}'"></a>
+                </ul>
+            </div>
+        </div>
+        <div class="lianxi-right-box">
+            <div id="rightbox1" class="lianxi-right-box1">
+                <div id="page">
+                    <div id="container" class="content clearfix">
+                        <div id="timeline">
+                            <ul id="dates">
+                                <li><a href="#1900" class="selected">1900</a></li>
+                                <li><a href="#1930">1930</a></li>
+                                <li><a href="#1944">1944</a></li>
+                                <li><a href="#1950">1950</a></li>
+                                <li><a href="#1971">1971</a></li>
+                                <li><a href="#1977">1977</a></li>
+                                <li><a href="#1989">1989</a></li>
+                                <li><a href="#1999">1999</a></li>
+                                <li><a href="#2001">2001</a></li>
+                                <li><a href="#2011">2011</a></li>
+                            </ul>
+                            <ul id="issues">
+                                <li id="1900">
+                                    <img src="/static/img/1s.png" width="256" height="256"/>
+
+                                    <h1>1900</h1>
+
+                                    <p>Donec semper quam scelerisque tortor dictum gravida.</p>
+                                </li>
+                                <li id="1900">
+                                    <img src="/static/img/2s.png" width="256" height="256"/>
+
+                                    <h1>1930</h1>
+
+                                    <p>Donec semper quam scelerisque tortor dictum gravida.</p>
+                                </li>
+                                <li id="1944">
+                                    <img src="/static/img/3s.png" width="256" height="256"/>
+
+                                    <h1>1944</h1>
+
+                                    <p>Donec semper quam scelerisque tortor dictum gravida.</p>
+                                </li>
+                                <li id="1950">
+                                    <img src="/static/img/4s.png" width="256" height="256"/>
+
+                                    <h1>1950</h1>
+
+                                    <p>Donec semper quam scelerisque tortor dictum gravida.</p>
+                                </li>
+                                <li id="1971">
+                                    <img src="/static/img/5s.png" width="256" height="256"/>
+
+                                    <h1>1971</h1>
+
+                                    <p>Donec semper quam scelerisque tortor dictum gravida.</p>
+                                </li>
+                                <li id="1977">
+                                    <img src="/static/img/6s.png" width="256" height="256"/>
+
+                                    <h1>1977</h1>
+
+                                    <p>Donec semper quam scelerisque tortor dictum gravida.</p>
+                                </li>
+                                <li id="1989">
+                                    <img src="/static/img/7s.png" width="256" height="256"/>
+
+                                    <h1>1989</h1>
+
+                                    <p>Donec semper quam scelerisque tortor dictum gravida.</p>
+                                </li>
+                                <li id="1999">
+                                    <img src="/static/img/8s.png" width="256" height="256"/>
+
+                                    <h1>1999</h1>
+
+                                    <p>Donec semper quam scelerisque tortor dictum gravida.</p>
+                                </li>
+                                <li id="2001">
+                                    <img src="/static/img/9s.png" width="256" height="256"/>
+
+                                    <h1>2001</h1>
+
+                                    <p>Donec semper quam scelerisque tortor dictum gravida.</p>
+                                </li>
+                                <li id="2011">
+                                    <img src="/static/img/10s.png" width="256" height="256"/>
+
+                                    <h1>2011</h1>
+
+                                    <p>Donec semper quam scelerisque tortor dictum gravida. </p>
+                                </li>
+                            </ul>
+                            <div id="grad_left"></div>
+                            <div id="grad_right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script src="{% static 'JS/yundong2.js' %}"></script>
+<script src="{% static 'JS/panduan.js' %}"></script>
+<script src="{% static 'JS/daohang.js' %}"></script>
+<script>
+    var zuo1 = document.getElementById('leftbox1');
+    var you1 = document.getElementById('rightbox1');
+    var pt2 = zuo1.getElementsByTagName('li');
+    var pt3 = zuo1.getElementsByTagName('div');
+    var pt4 = zuo1.getElementsByTagName('span');
+    var pt5 = zuo1.getElementsByTagName('p');
+
+
+    <!-- 左右动画 -->
+
+    function you() {
+        you1.style.animation = 'to6 1s';
+        you1.style.animationFillMode = 'forwards';
+    };
+    setTimeout(you, 200);
+
+    for (var i = 0; i < pt2.length; i++) {
+        pt2[i].index = i
+        pt2[i].onclick = function () {
+            for (var i = 0; i < pt2.length; i++) {
+                startMove(pt3[this.index], {top: 0});
+            }
+        };
+        pt4[i].index = i
+        pt4[i].onclick = function () {
+            for (var i = 0; i < pt4.length; i++) {
+                startMove(pt3[this.index], {top: -1500});
+            }
+        };
+    }
+
+
+</script>
+
+{% endblock %}
+

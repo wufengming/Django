@@ -1,0 +1,30 @@
+{% extends 'siteManager/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div id="q1"class="w2">
+        <div id="box" class="content2-1 tad">
+            <div id="zxc" class="anniu1"><a href="{% url 'options' tabletype %}">返回</a></div>
+            <div id="li1" class="content-box1">
+                <ul>
+                    {% if category_first %}
+                        <div class="zhihui">{{ category_first.TypeID__Name }}</div>
+                        {% for category in category_list %}
+                            <li><p><a href="{% url 'content' tabletype category.TypeID__Code category.id %}">{{ category.Title }}</a></p></li>
+                        {% endfor %}
+                    {% else %}
+
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="content-box2">
+                <div class="content-box3">
+                    <div class="content-box4">
+                        <div style="color:#000000">{{ detail_content.Content|safe }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

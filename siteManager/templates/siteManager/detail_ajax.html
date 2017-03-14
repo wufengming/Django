@@ -1,0 +1,86 @@
+{% extends 'siteManager/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div id="q1"class="w2">
+        <div id="box" class="content2-1 tad">
+            <div id="zxc" class="anniu1"><a href="{% url 'options' tabletype %}">返回</a></div>
+            <div id="li1" class="content-box1">
+                <ul>
+                    {% if category_first %}
+                        <div class="zhihui">{{ category_first.TypeID__Name }}</div>
+                        {% for category in category_list %}
+                             <li><p class="contentid" id="{{ category.id }}">{{ category.Title }}</p></li>
+                        {% endfor %}
+                    {% else %}
+
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="content-box2">
+                <div class="content-box3">
+                    <div class="content-box4">
+                        <div id='result' style="color:#000000">{{ detail_content.Content|safe }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <link rel="stylesheet" type="text/css" href={% static "ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/Monokai.css" %} >
+    <script src={% static "ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js" %}></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+     <script>
+        $(document).ready(function(){
+            $(".contentid").click(function(){
+                var contentid = $(this).attr("id");
+
+                $.get("{% url 'content_ajax' %}",{'table': '{{ tabletype }}', 'contentid':contentid}, function(ret){
+                    var contentText = ret["Content"];
+                    $('#result').empty();
+                    $('#result').append(contentText);
+
+                    //刷新内嵌样式
+                    $('pre code').each(function(i, block) {
+                        hljs.highlightBlock(block);
+                    });
+                })
+            });
+
+
+        });
+    </script>
+{% endblock %}
+
+{% block js %}
+<script src="{% static "JS/yundong2.js"%}"></script>
+<script src="{% static "JS/panduan.js"%}"></script>
+<script src="{% static "JS/daohang.js"%}"></script>
+<script src="{% static "JS/jquery-1.11.1.min.js"%}"></script>
+<script>
+//导航
+$(".navigation li").click(function(){
+	var index = $(".navigation li").index(this);
+	$(".tad").hide(0);
+	$(".tad").eq(index).fadeIn(0);
+})
+
+//判断IE9-5
+if(myBrowser() == "IE55"||myBrowser() == "IE6"||myBrowser() == "IE7"||myBrowser() == "IE8"){
+    t5.className='';
+	zHui.className='sannong-2';
+	zHui1.className='licai-2';
+	zHui2.className='gonghui-2';
+}
+
+if(myBrowser() == "IE9"){
+     t5.className='';
+	zHui.className='sannong-1';
+	zHui1.className='licai-1';
+	zHui2.className='gonghui-1';
+}
+</script>
+
+{% endblock %}
+
+

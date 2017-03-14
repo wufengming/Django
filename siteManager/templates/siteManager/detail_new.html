@@ -1,0 +1,209 @@
+{% extends 'siteManager/base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/gongyong.css' %}">
+<link rel="stylesheet" href="{% static 'css/chanping.css' %}">
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/width-1440.css' %}" >
+<link rel="stylesheet" href="{% static 'css/width-1366.css' %}" >
+<link rel="stylesheet" href="{% static 'css/width-1280.css' %}" >
+<script src="{% static 'JS/jquery-1.11.1.min.js'%}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div id="q1" class="w2" style="margin-left: 60px;">
+    <div id="box" class="content2-1 tad">
+        <div id="zxc" class="anniu1"><a href="{% url 'options' tabletype %}">返回</a></div>
+        <div id="li1" class="content-box1">
+            <ul>
+                {% if category_first %}
+                <div class="zhihui">{{ category_first.TypeID__Name }}</div>
+                {% for category in category_list %}
+                    {% if forloop.first%}
+                         <li style="background-color: #669535;">
+                             <p class="contentid" id="{{ category.id }}">{{category.Title| slice:"15" }}</p>
+                         </li>
+                    {% else %}
+                         <li>
+                             <p class="contentid" id="{{ category.id }}">{{ category.Title| slice:"15" }}</p>
+                         </li>
+                    {% endif%}
+                {% endfor %}
+                {% else %}
+
+                {% endif %}
+            </ul>
+        </div>
+        <div class="content-box2" style="overflow-x:hidden;overflow-y:hidden;">
+            <section id="content_section" class="section-wrap">
+                {% for content_page in detail_content %}
+                    {% if forloop.first%}
+                       <div class="section section-0">
+                            <div class="title active">
+                                <img src="{{ imgurl }}{{content_page.Attachment}}" style="width: 100%;height: 100%" >
+                            </div>
+                        </div>
+                    {% else %}
+                       <div class="section section-{{forloop.counter0}}">
+                            <div class="title">
+                                 <img src="{{ imgurl }}{{content_page.Attachment}}" style="width: 100%;height: 100%">
+                            </div>
+                        </div>
+                    {% endif%}
+                {% endfor %}
+            </section>
+            <ul id="content_ul" class="section-btn">
+                {% for content_page in detail_content %}
+                    {% if forloop.first%}
+                         <li class="on"></li>
+                    {% else %}
+                         <li></li>
+                    {% endif%}
+                {% endfor %}
+            </ul>
+            <div class="arrow">&laquo;</div>
+        </div>
+    </div>
+</div>
+
+
+<!--点击事件-->
+<!--<link rel="stylesheet" type="text/css"-->
+      <!--href="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/Monokai.css' %}">-->
+<!--<script src="{% static 'ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js' %}"></script>-->
+<!--<script>hljs.initHighlightingOnLoad();</script>-->
+<script>
+    $(document).ready(function () {
+
+        var i=0;
+		var $btn = $('.section-btn li'),
+			$wrap = $('.section-wrap'),
+			$arrow = $('.arrow');
+
+        $(".contentid").click(function () {
+            var contentid = $(this).attr("id");
+
+
+
+            $.get("{% url 'content_ajax' %}", {'table': '{{ tabletype }}', 'contentid': contentid}, function (ret) {
+
+                //清理原来的内容
+                $('#content_section').empty();
+                $('#content_ul').empty();
+
+                if(ret.data != '[]'){
+                    var data = $.parseJSON(ret.data);
+
+                    data.forEach(function(value, index) {
+
+                        if(index==0){
+                            $('#content_section').append('<div class="section section-1"><div class="title active"><img src="/media/'+value.Attachment+'" style="width: 100%;height: 100%" ></div></div>');
+                            $('#content_ul').append('<li class="on"></li>');
+
+                        }else {
+                            $('#content_section').append('<div class="section section-'+(Number(index)+1).toString()+'"><div class="title"><img src="/media/'+value.Attachment+'" style="width: 100%;height: 100%" ></div></div>');
+                            $('#content_ul').append('<li></li>');
+                        }
+                    });
+
+                    i=0;
+                    run();
+
+                }
+            })
+        });
+
+
+		/*当前页面赋值*/
+		function up(){i++;if(i==$('.section-btn li').length){i=0};}
+		function down(){i--;if(i<0){i=$('.section-btn li').length-1};}
+
+		function run(){
+			$('.section-btn li').eq(i).addClass('on').siblings().removeClass('on');
+			$('.section-wrap').attr("class","section-wrap").addClass(function() { return "put-section-"+i; }).find('.section').eq(i).find('.title').addClass('active');
+
+            //console.log(i);
+		};
+
+
+		/*右侧按钮点击*/
+		$('.section-btn li').each(function(index) {
+			$(this).click(function(){
+				i=index;
+				run();
+			})
+		});
+
+		/*翻页按钮点击*/
+		$('.arrow').one('click',go);
+		function go(){
+			up();run();
+			setTimeout(function(){$('.arrow').one('click',go)},1000)
+		};
+
+		/*响应鼠标*/
+		$('.section-wrap').one('mousewheel',mouse_);
+		function mouse_(event){
+			if(event.deltaY<0) {up()}
+			else{down()}
+			run();
+			setTimeout(function(){$('.section-wrap').one('mousewheel',mouse_)},1000)
+		};
+
+		/*响应键盘上下键*/
+		$(document).one('keydown',k);
+		function k(event){
+			var e=event||window.event;
+			var key=e.keyCode||e.which||e.charCode;
+			switch(key)	{
+				case 38: down();run();
+				break;
+				case 40: up();run();
+				break;
+			};
+			setTimeout(function(){$(document).one('keydown',k)},1000);
+		}
+    });
+
+</script>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'JS/yundong2.js'%}"></script>
+<script src="{% static 'JS/panduan.js'%}"></script>
+<script src="{% static 'JS/daohang.js'%}"></script>
+<script src="{% static 'JS/productcontent_roll.js'%}"></script>
+<script>
+    var li1 = document.getElementById('li1');
+    var oLi3 = li1.getElementsByTagName('li');
+
+
+    // 添加选中的样式
+    var foo = function () {
+        var li1 = document.getElementById('li1'),
+                oLi3 = li1.getElementsByTagName('li'),
+                i = 0,
+                max = oLi3.length;
+        for (; i < max; i++) {
+            (function (index) {
+                oLi3[index].onclick = function () {
+
+                    for (var i = 0; i < oLi3.length; i++) {
+                        oLi3[i].style.backgroundColor = ''
+                    }
+                    this.style.backgroundColor = '#669535';
+                };
+            })(i);
+        }
+    };
+    foo();
+
+
+</script>
+
+{% endblock %}
+
+

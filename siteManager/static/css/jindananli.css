@@ -1,0 +1,82 @@
+::-webkit-scrollbar
+{
+    width: 5px;
+    height: 2px;
+    background-color:#CCC;
+}
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+.bx{
+	width:1500px;
+	height:500px; 
+	position:relative;
+	left:50%;
+	margin-left:-750px;
+	top:50%;
+	margin-top:-250px;
+}
+.bx ul{
+	width:1500px;
+	height:500px; 	
+	overflow:hidden;
+}
+.bx ul li{
+	width:400px;
+	height:450px;
+	float:left;
+	background-color:#212121;
+	margin-left:75px;
+	margin-top:25px;
+	position:relative;
+	box-shadow:5px 5px 20px 0px #000000;
+}
+.pc{
+	font-family:'微软雅黑';
+	font-size:70px;
+	text-align:center;
+	color:#669535;
+	margin-top:56px;
+}
+.bx ul li div{
+	position:absolute;
+	left:0;
+	top:0;
+	width:400px;
+	height:450px;
+	background-color:#fff;
+	filter:alpha(opacity:0);
+	opacity:0;
+	overflow:hidden;
+}
+
+
+.c{
+	width:380px;
+	height:430px;
+	position:absolute;
+	top:50%;
+	margin-top:-215px;
+	left:50%;
+	margin-left:-190px;
+	text-align:center;
+	display:block;
+	overflow:auto;
+}
+.c1{
+	font-family:'微软雅黑';
+	display:block;
+	padding:4px;
+}

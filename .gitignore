@@ -1,0 +1,9 @@
+/gsoftSite/*.pyc
+/ckeditor/*.pyc
+/ckeditor_uploader/*.pyc
+/django_admin_bootstrapped/*.pyc
+/django_admin_bootstrapped/admin/*.pyc
+/django_admin_bootstrapped/templatetags/*.pyc
+/siteManager/*.pyc
+/siteManager/migrations/*.pyc
+/.idea

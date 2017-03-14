@@ -1,0 +1,115 @@
+{% extends 'siteManager/base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/gongyong.css' %}">
+<link rel="stylesheet" href="{% static 'css/xinwen.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/chanping.css' %}">
+<link rel="stylesheet" href="{% static 'css/xinwengdongtai.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/width-1440.css' %}" >
+<link rel="stylesheet" href="{% static 'css/width-1366.css' %}" >
+<link rel="stylesheet" href="{% static 'css/width-1280.css' %}" >
+{% endblock %}
+
+{% block content %}
+ <div id="q1"class="w2">
+    <!-- 新闻动态 -->
+    <div id="tab5"  class="content2 tad">
+       <div class="content2-box1">
+            <div class="shadow"></div>
+            <div class="Journalism-top">
+                <div class="left yuan">
+                    <div class="yuan-1"></div>
+                </div>
+                <p class="width-100 left text-left" style="margin-left:5px;">新闻动态</p>
+            </div>
+            <div class="tent">
+                 <ul>
+                      <li>
+                          <div class="content-top-box">
+                              <p class="left" style="margin-left:4px;">公司动态</p>
+                              <p class="right" style="margin-right:4px; font-size:10px; color:#F00;">
+                              {% if article_list %}
+                                 <a href="{% url 'articledetail' articletype article_list.0.Type__Code article_list.0.id %}"> 更多>></a></p>
+                              {% endif %}
+                          </div>
+                            {% for article_page in article_list %}
+
+                               {% if forloop.first%}
+                               <div class="xt6" style="">
+                                     	<a href="{% url 'articledetail'  articletype article_page.Type__Code article_page.id %}" style="width:30%; float:left; height:100px;">
+                                        	<img src="{{ imgurl }}{{article_page.Attachment }}" style="width:100%; height:100%;" />
+                                        </a>
+                                        <div style="width:70%;  float:left; height:100px; position:relative;">
+                                        	<a href="{% url 'articledetail'  articletype article_page.Type__Code article_page.id %}" class="xt">{{article_page.Title}}</a>
+                                            <p class="xt1" style="color:#999; ">{{article_page.CreateTime|date:"Y-m-d" }}</p>
+                                        </div>
+                                </div>
+                               {% else %}
+                                 <div class="xt2">
+                                     	<div class="xt3"></div>
+                                        <a href="{% url 'articledetail'  articletype article_page.Type__Code article_page.id %}" class="xt4" style=" font-size:16px;">{{article_page.Title}}</a>
+                                        <p class="xt5" style="color:#999;">{{article_page.CreateTime|date:"Y-m-d" }}</p>
+                                 </div>
+                               {% endif%}
+                            {% empty %}
+                                <a><span>不存在新闻内容！</span></a>
+                            {% endfor %}
+
+                      </li>
+                      <li>
+                          <div class="content-top-box">
+                              <p class="left" style="margin-left:4px;">热点关注</p>
+                              <p class="right" style="margin-right:4px; font-size:10px; color:#F00;">
+                              {% if article_list2 %}
+                                 <a href="{% url 'articledetail' articletype article_list2.0.Type__Code article_list2.0.id %}"> 更多>></a></p>
+                              {% endif %}
+                              </p>
+                          </div>
+                            {% for article_page in article_list2 %}
+
+                               {% if forloop.first%}
+                                 <div class="xt6" style="">
+                                    <a href="{% url 'articledetail' articletype article_page.Type__Code article_page.id %}" style="width:30%; float:left; height:100px;">
+                                        <img src="{{ imgurl }}{{article_page.Attachment }}" style="width:100%; height:100%;" />
+                                    </a>
+                                    <div style="width:70%;  float:left; height:100px; position:relative;">
+                                        <a href="{% url 'articledetail' articletype article_page.Type__Code article_page.id %}" class="xt">{{article_page.Title}}</a>
+                                        <p class="xt1" style="color:#999; margin-top:10px;">{{article_page.CreateTime|date:"Y-m-d" }}</p>
+                                    </div>
+                                </div>
+                               {% else %}
+                                 <div class="xt2">
+                                     	<div class="xt3"></div>
+                                        <a href="{% url 'articledetail' articletype article_page.Type__Code article_page.id %}" class="xt4" style=" font-size:16px;">{{article_page.Title}}</a>
+                                        <p class="xt5" style="color:#999;">{{article_page.CreateTime|date:"Y-m-d" }}</p>
+                                 </div>
+                               {% endif%}
+
+                            {% empty %}
+                                <a><span>不存在新闻内容！</span></a>
+                            {% endfor %}
+
+
+
+                      </li>
+                 </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script src="{% static 'JS/yundong2.js' %}"></script>
+<script src="{% static 'JS/panduan.js' %}"></script>
+<script src="{% static 'JS/daohang.js' %}"></script>
+<script src="{% static 'JS/jquery-1.11.1.min.js' %}"></script>
+<script>
+
+</script>
+
+{% endblock %}
+

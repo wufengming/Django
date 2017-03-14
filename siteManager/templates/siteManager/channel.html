@@ -1,0 +1,31 @@
+{% extends 'siteManager/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ <div id="q1"class="w2">
+
+    <div id="tab2"  class="content2 tad">
+        <div id="zhezhao4" class="zhezhao"></div>
+        <div class="content7-left-box">
+            <div class="content7-left-box1">
+                <div id="zuo-dian" class="content7-left-box2"></div>
+            </div>
+            <div class="content7-top-box"></div>
+            <div class="content7-right-box">
+                <div id="you-dian"  class="content7-right-box1"></div>
+            </div>
+        </div>
+        <div class="right-box1">
+            <div id="tu" class="ditu" ></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "JS/jiaru_yingxiao.js" %}"></script>
+    <script src="{% static 'JS/yundong2.js' %}"></script>
+    <script src="{% static "JS/panduan.js" %}"></script>
+    <script src="{%  static "JS/daohang.js" %}"></script>
+    <script src="{% static "JS/jquery-1.11.1.min.js"%}"></script>
+{% endblock %}

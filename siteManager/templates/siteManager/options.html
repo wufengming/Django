@@ -1,0 +1,51 @@
+{% extends 'siteManager/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ <div id="q1"class="w2">
+
+    <div id="tab2"  class="content2 tad">
+        <div id="zhezhao1" class="zhezhao"></div>
+        <div class="content2-box1" style="overflow-x:hidden;overflow-y:hidden;">
+            <div class="shadow"></div>
+            <div id="tc" class="chanpin">
+               {% for category in category_list %}
+                   <div id="sannong-{{ forloop.counter }}" class="options-{{ forloop.counter }}">
+                        <p class="p1" style=" font-family: ">{{ category.Name }}</p>
+                        <p class="p2">{{ category.EnglishName }}</p>
+                        <input class="p3" type="button" value="GO" onClick="location.href='{% url 'list' tabletype category.Code %}'"/>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'JS/yundong2.js'%}"></script>
+<script src="{% static 'JS/panduan.js'%}"></script>
+<script src="{% static 'JS/daohang.js'%}"></script>
+<script src="{% static 'JS/chanping.js'%}"></script>
+<script src="{% static 'JS/jquery-1.11.1.min.js'%}"></script>
+
+<script>
+        //判断IE9-5
+    if(myBrowser() == "IE55"||myBrowser() == "IE6"||myBrowser() == "IE7"||myBrowser() == "IE8"){
+        t5.className='';
+        zHui.className='sannong-2';
+        zHui1.className='licai-2';
+        zHui2.className='gonghui-2';
+    }
+
+    if(myBrowser() == "IE9"){
+         t5.className='';
+        zHui.className='sannong-1';
+        zHui1.className='licai-1';
+        zHui2.className='gonghui-1';
+    }
+</script>
+
+
+{% endblock %}
+

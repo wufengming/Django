@@ -1,0 +1,30 @@
+body{
+	margin:0;
+	padding:0;
+	background-color:#FFF;
+}
+body, html {
+ 	height: 100%;
+ 	-webkit-tap-highlight-color: transparent;
+}
+ul,li{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+body,h1,h2,h3,h4,p{
+	margin:0;
+	padding:0;
+}
+img,a{
+	display:block;
+}
+
+a{
+	text-decoration:none;
+	color:inherit;
+	font-family:'微软雅黑';
+	font-size:14px;
+	display:block;
+}
+

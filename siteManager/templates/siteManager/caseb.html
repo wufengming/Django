@@ -1,0 +1,70 @@
+{% extends 'siteManager/base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/gongyong.css' %}">
+<link rel="stylesheet" href="{% static 'css/jindananli.css' %}">
+<link rel="stylesheet" href="{% static 'css/width-1440.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/width-1366.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/width-1280.css' %}" >
+{% endblock %}
+
+{% block bodystyle %}
+    <body style="background:url({% static 'img/anlib.jpg' %})">
+{% endblock %}
+
+{% block content %}
+    <div id="bx1" class="bx">
+	<ul>
+        {% for category in category_list %}
+            <li>
+                <img src="{{ imgurl }}img/anli{{forloop.counter}}.png" %}" width="100%"  />
+                <p class="pc">{{ category.Name }}</p>
+                <div>
+                    <p class="c">
+                    {% for content in content_list %}
+                        {% if content.TypeID == category.id %}
+                            <span class="c1">{{ content.Title }}</span>
+                        {% endif %}
+                    {% endfor %}
+                    </p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'JS/daohang.js' %}"></script>
+    <script src="{% static 'JS/yundong2.js' %}"></script>
+    <script>
+        var bX1=document.getElementById('bx1');
+        var oLi=bX1.getElementsByTagName('li');
+        var oDiv=bX1.getElementsByTagName('div');
+
+        for(var i=0;i<oLi.length;i++)
+        {
+            oLi[i].index=i
+            oLi[i].onmouseover=function()
+            {
+                for(var i=0;i<oLi.length;i++)
+                {
+                    //startMove(oDiv[i],{opacity:0});
+                    startMove(oDiv[this.index],{opacity:100});
+                }
+            }
+            oLi[i].onmouseout=function()
+            {
+                for(var i=0;i<oLi.length;i++)
+                {
+                    //oDiv[i].style.opacity='0';
+                    //oDiv.style.filter='alpha(opacity:0)';
+                    startMove(oDiv[this.index],{opacity:0});
+                }
+            }
+        }
+    </script>
+{% endblock %}
+

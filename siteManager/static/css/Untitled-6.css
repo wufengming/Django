@@ -1,0 +1,88 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+#banner{
+	position:fixed;
+	width:700px;
+	height:350px;
+	border:#000 1px solid;
+}
+#banner .con{
+	width:700px;
+	height:350px;
+	margin:0 auto 0;
+	position:relative;
+}
+#banner .con ul.pac{
+	width:700px;
+	height:350px;
+	position:relative;
+}
+#banner .con ul.pac li{
+	width:700px;
+	height:350px;
+	list-style-type:none;
+	position:absolute;
+	top:0;
+	left:0;
+	display:none;
+}
+#banner .con span.zuo{
+	display:block;
+	width:46px;
+	height:70px;
+	background:url(../img/button.png) 0px -134px;
+	position:absolute;
+	top:50%;
+	margin-top:-35px;
+	left:0;
+	display:none;
+}
+#banner .con span.zuo:hover{
+	background:url(../img/button.png) -132px 0px;
+}
+#banner .con span.you{
+	display:block;
+	width:46px;
+	height:70px;
+	background:url(../img/button.png) -54px -134px;
+	position:absolute;
+	top:50%;
+	margin-top:-35px;
+	left:100%;
+	margin-left:-46px;
+	display:none;
+}
+#banner .con span.you:hover{
+	background:url(../img/button.png) -186px 0px;
+}
+#banner ul.but{
+	width:120px;
+	height:20px;
+	background:rgba(0,0,0,0.5); /*IE下不支持 background:rgba(0,0,0,0.5)透明度.所以在IE下无法实现*/
+	position:absolute;
+	bottom:10px;
+	left:0;
+	left:50%;
+	margin-left:-75px;
+	border-radius:10px;
+	display:block;
+	border-radius:10px;
+}
+#banner ul.but li{
+	list-style-type:none;
+	width:12px;
+	height:12px;
+	border:#FDFCFC 1px solid;
+	float:left;
+	margin:3px 5px;
+	border-radius:50%;
+	-ms-border-radius:50%;
+	behavior:url(ie-css3.htc);
+}
+#banner ul.but li.hover{
+	background:#FBF8F8;
+}
+a img{ border:none}

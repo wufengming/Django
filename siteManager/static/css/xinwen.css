@@ -1,0 +1,93 @@
+.content2-box{
+	width:500px;
+	height:100%;
+	border-right:#FFF 1px solid;
+	float:left;
+}
+
+
+/*.right a {*/
+    /*float: right;*/
+    /*cursor: pointer;*/
+    /*text-decoration: none;*/
+	/*margin-right:4px;*/
+	/*font-size:14px;*/
+/*}*/
+/*.right a:hover, a:active {*/
+    /*color: #8ec31f;*/
+    /*text-decoration: none;*/
+/*}*/
+
+
+.xt{
+	color:#000;
+	width:80%;
+	margin-left:20px;
+	word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+    -webkit-line-clamp:3; /** 显示的行数 **/
+    overflow: hidden;  /** 隐藏超出的内容 **/
+	/*font-family:'宋体 Regular" , "宋体'*/
+
+}
+
+.xt1{
+	position:absolute;
+	bottom:8px;
+	text-align:right;
+	color:#000;
+	width:80%;
+	margin-left:20px;
+	word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+    -webkit-line-clamp:3; /** 显示的行数 **/
+    overflow: hidden;  /** 隐藏超出的内容 **/
+	/*font-family:'宋体 Regular" , "宋体'*/
+
+}
+.xt2{
+	width:100%;
+	display:block;
+	overflow:hidden;
+	height:30px;
+}
+.xt3{
+	width:10px;
+	margin-top:10px;
+	height:10px;
+	border-radius:10px;
+	display:block;
+	background-color:#8ec31f;
+	float:left;
+}
+.xt4{
+	font-size:16px;
+	float:left;
+	line-height:30px;
+	margin-left:8px;
+	width:65%;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	color:#000;
+	/*font-family:'宋体 Regular" , "宋体'*/
+}
+.xt5{
+	float:right;
+	margin-right:68px;
+
+}
+.xt6{
+	width:100%;
+	overflow:hidden;
+	margin-top:6px;
+	margin-bottom:10px;
+}
+.tent ul li .xt6 p:hover{color:#F00}
+.tent ul li .xt4:hover{color:#F00}
+
+.tent ul li .xt:hover{color:#F00}
